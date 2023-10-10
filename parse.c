@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:27 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/05 17:56:50 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:34:03 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_mutex(t_gen *gen, int i)
 	pthread_mutex_init(&gen->mu_data[i], NULL);
 }
 
-void	dta_philos(t_gen *gen, int argc, int i)
+void	dta_philos(t_gen *gen, int i)
 {
 	gen->philo[i].data = gen;
 	gen->philo[i].id = i + 1;
@@ -53,10 +53,7 @@ void	dta_philos(t_gen *gen, int argc, int i)
 	gen->philo[i].start_time_philo = gen->start_time;
 	gen->philo[i].mu_data_ph = gen->mu_data;
 	gen->philo[i].mu_print_ph = gen->mu_print;
-	if (argc == 6)
-		gen->philo->num_eats_philo = gen->num_eats;
-	else
-		gen->philo->num_eats_philo = gen->num_eats;
+	gen->philo[i].num_eats_philo = gen->num_eats;
 }
 
 void	init_data(t_gen *gen)

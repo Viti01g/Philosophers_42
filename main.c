@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:27:15 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/09 18:32:57 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:35:45 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 	{
 		init_variable(&gen, argv, argc);
-		ft_start_party(&gen, argc);
+		ft_start_party(&gen);
 		ft_pedir_cuenta(&gen);
 	}
 	else

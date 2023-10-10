@@ -6,14 +6,14 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 13:01:34 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/10/09 18:36:09 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/10/10 15:40:47 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=thread
 
 SRCS = main.c \
 			error.c \

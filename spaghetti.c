@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:41:11 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/09 18:41:29 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:19:16 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	ft_provolonne(t_philo *philo)
 	philo->last_eat = get_time() - philo->start_time_philo;
 	ft_print_msgs(philo, EATING);
 	ft_usleep(philo->mls_eat_ph);
+	if (philo->num_eats_philo >= 0)
+		philo->num_eats_philo++;
 	pthread_mutex_unlock(&(philo->data->forks[philo->tenedo_izq]));
 	pthread_mutex_unlock(&(philo->data->forks[philo->tenedo_drch]));
 	ft_print_msgs(philo, SLEEP);
@@ -47,24 +49,23 @@ void	*ft_spaghetti(void *tomato_y_peperoni)
 	pthread_mutex_unlock(cheese->mu_print_ph);
 }
 
-void	ft_start_party(t_gen *gen, int argc)
+void	ft_start_party(t_gen *gen)
 {
 	int	i;
-	int j;
 
 	i = 0;
 	while (i < gen->num_philos)
 	{
 		init_mutex(gen, i);
-		dta_philos(gen, argc, i);
-		j = pthread_create(&(gen->philo_id[i]), NULL, &ft_spaghetti, &(gen->philo[i]));
+		dta_philos(gen, i);
+		pthread_create(&(gen->philo_id[i]), NULL, &ft_spaghetti, &(gen->philo[i]));
 		i++;
 	}
 }
 
 int	ft_caducado(t_gen *gen, int i)
 {
-	gen->actual_time = get_time() - gen->philo[i].start_time_philo;
+	gen->actual_time = get_time() - gen->philo->start_time_philo;
 	if ((gen->actual_time - gen->philo[i].last_eat) > gen->ml_die_gn)
 	{
 		ft_print_msgs(&(gen->philo[i]), DEAD);
@@ -72,6 +73,17 @@ int	ft_caducado(t_gen *gen, int i)
 		gen->flag++;
 		pthread_mutex_unlock(gen->mu_print);
 		return(0);
+	}
+	if (gen->philo[i].num_eats_philo == gen->num_eats && gen->num_eats_counter == 0)
+	{
+		gen->num_eats_counter = 1;
+		if (++gen->nbr_philos_eat == data->nbr_philo)
+		{
+			pthread_mutex_lock(data->print_lock);
+			data->end = 1;
+			pthread_mutex_unlock(data->print_lock);
+			return (0);
+		}
 	}
 	return(1);
 }
