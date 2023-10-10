@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:39:20 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 18:09:32 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:20:51 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct philo
 	int				*life;
 	long			start_time_philo;
 	long			num_eats_philo;
+	long			num_eats_philo_max;
 	long			mls_eat_ph;
 	long			mls_die_ph;
 	long			mls_thk_ph;

@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:27 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 15:34:03 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:21:23 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	dta_philos(t_gen *gen, int i)
 	gen->philo[i].tenedo_izq = i;
 	gen->philo[i].tenedo_drch = (i + 1) % (gen->num_philos);
 	gen->philo[i].life = &(gen->flag);
-	gen->philo[i].num_eats_counter = 0;
+	gen->philo[i].num_eats_philo = 0;
 	gen->philo[i].mls_eat_ph = gen->ml_eat_gn;
 	gen->philo[i].mls_die_ph = gen->ml_die_gn;
 	gen->philo[i].mls_thk_ph = gen->ml_thk_gn;
 	gen->philo[i].start_time_philo = gen->start_time;
 	gen->philo[i].mu_data_ph = gen->mu_data;
 	gen->philo[i].mu_print_ph = gen->mu_print;
-	gen->philo[i].num_eats_philo = gen->num_eats;
+	gen->philo[i].num_eats_philo_max = gen->num_eats;
 }
 
 void	init_data(t_gen *gen)
