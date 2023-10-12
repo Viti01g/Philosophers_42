@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:27:15 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 15:35:45 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:47:37 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ static void	ft_pedir_cuenta(t_gen *gen)
 
 int	main(int argc, char **argv)
 {
-	char **argf;
-	argf = argv;
 	t_gen	gen;
 
 	if (argc == 5 || argc == 6)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:27 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 18:21:23 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:46:54 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	init_variable(t_gen *gen, char **argv, int argc)
 	if ((gen->num_eats == 0) || gen->ml_die_gn <= 0 || gen->ml_eat_gn <= 0
 		|| gen->ml_thk_gn <= 0)
 		msg_err("Todos los argumentos tienen que estar por encima de 0.\n", gen);
+	gen->num_eats_counter = 0;
 	gen->flag = TRUE;
 	init_data(gen);
-	//printf("num filos: %ld\ntiempo muerte: %ld\ntiempo comida: %ld\ntiempo dormir: %ld\n", gen->num_philos, gen->ml_die_gn, gen->ml_eat_gn, gen->ml_thk_gn);
 }
 
 void	init_mutex(t_gen *gen, int i)
@@ -47,6 +47,7 @@ void	dta_philos(t_gen *gen, int i)
 	gen->philo[i].tenedo_drch = (i + 1) % (gen->num_philos);
 	gen->philo[i].life = &(gen->flag);
 	gen->philo[i].num_eats_philo = 0;
+	gen->philo[i].finish_eat = FALSE;
 	gen->philo[i].mls_eat_ph = gen->ml_eat_gn;
 	gen->philo[i].mls_die_ph = gen->ml_die_gn;
 	gen->philo[i].mls_thk_ph = gen->ml_thk_gn;

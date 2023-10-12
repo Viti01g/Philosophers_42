@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spaghetti.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:41:11 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 18:19:16 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:00:40 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,19 @@ int	ft_caducado(t_gen *gen, int i)
 	{
 		ft_print_msgs(&(gen->philo[i]), DEAD);
 		pthread_mutex_lock(gen->mu_print);
-		gen->flag++;
+		gen->flag = TRUE;
 		pthread_mutex_unlock(gen->mu_print);
 		return(0);
 	}
-	if (gen->philo[i].num_eats_philo == gen->num_eats && gen->num_eats_counter == 0)
+	if (gen->philo[i].num_eats_philo == gen->philo[i].num_eats_philo_max && gen->philo[i].finish_eat == FALSE)
 	{
-		gen->num_eats_counter = 1;
-		if (++gen->nbr_philos_eat == data->nbr_philo)
+		gen->philo[i].finish_eat = TRUE;
+		gen->num_eats_counter++;
+		if (gen->num_eats_counter == gen->num_philos)
 		{
-			pthread_mutex_lock(data->print_lock);
-			data->end = 1;
-			pthread_mutex_unlock(data->print_lock);
+			pthread_mutex_lock(gen->mu_print);
+			gen->flag = TRUE;
+			pthread_mutex_unlock(gen->mu_print);
 			return (0);
 		}
 	}

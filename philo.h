@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:39:20 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/10 18:20:51 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/12 12:49:14 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct philo
 	long			start_time_philo;
 	long			num_eats_philo;
 	long			num_eats_philo_max;
+	long			finish_eat;
 	long			mls_eat_ph;
 	long			mls_die_ph;
 	long			mls_thk_ph;

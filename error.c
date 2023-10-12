@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:28:06 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/05 16:42:29 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/11 06:32:47 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
 
-void	freeall(t_gen *data)
+/* void	freeall(t_gen *data)
 {
 	int	i;
 
 	i = -1;
-	/* while (++i < data->num_philos)
+	while (++i < data->num_philos)
 	{
 		pthread_mutex_destroy(data->philo[i].tenedo_izq);
 		pthread_mutex_destroy(data->philo[i].tenedo_drch);
-	} */
+	} 
 	free(data->philo);
 	pthread_mutex_destroy(data->mu_print);
-}
+} */
 void	msg_err(char *msg, t_gen *gen)
 {
 	if (gen->flag >= 1)
