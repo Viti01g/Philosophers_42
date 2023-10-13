@@ -6,7 +6,7 @@
 /*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:27 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/12 13:46:54 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/13 12:11:58 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init_variable(t_gen *gen, char **argv, int argc)
 {
+	gen->flag_mllc = FALSE;
+	gen->flag_mtex = FALSE;
 	if (check_num(argv))
 		msg_err("Invalid Arguments\n", gen);
 	gen->num_philos = ft_atoi_philo(argv[1]);
@@ -28,7 +30,6 @@ void	init_variable(t_gen *gen, char **argv, int argc)
 		|| gen->ml_thk_gn <= 0)
 		msg_err("Todos los argumentos tienen que estar por encima de 0.\n", gen);
 	gen->num_eats_counter = 0;
-	gen->flag = TRUE;
 	init_data(gen);
 }
 
@@ -41,24 +42,26 @@ void	init_mutex(t_gen *gen, int i)
 
 void	dta_philos(t_gen *gen, int i)
 {
-	gen->philo[i].data = gen;
 	gen->philo[i].id = i + 1;
-	gen->philo[i].tenedo_izq = i;
-	gen->philo[i].tenedo_drch = (i + 1) % (gen->num_philos);
 	gen->philo[i].life = &(gen->flag);
+	gen->philo[i].start_time_philo = gen->start_time;
 	gen->philo[i].num_eats_philo = 0;
+	gen->philo[i].num_eats_philo_max = gen->num_eats;
 	gen->philo[i].finish_eat = FALSE;
+	gen->philo[i].last_eat = 0;
 	gen->philo[i].mls_eat_ph = gen->ml_eat_gn;
 	gen->philo[i].mls_die_ph = gen->ml_die_gn;
 	gen->philo[i].mls_thk_ph = gen->ml_thk_gn;
-	gen->philo[i].start_time_philo = gen->start_time;
-	gen->philo[i].mu_data_ph = gen->mu_data;
+	gen->philo[i].tenedo_izq = i;
+	gen->philo[i].tenedo_drch = (i + 1) % (gen->num_philos);
 	gen->philo[i].mu_print_ph = gen->mu_print;
-	gen->philo[i].num_eats_philo_max = gen->num_eats;
+	gen->philo[i].mu_data_ph = gen->mu_data;
+	gen->philo[i].data = gen;
 }
 
 void	init_data(t_gen *gen)
 {
+	gen->flag_mllc = TRUE;
 	gen->philo = malloc(sizeof(t_philo) * gen->num_philos);
 	if (!gen->philo)
 		msg_err("failed to alloc memory.\n", gen);
@@ -75,8 +78,4 @@ void	init_data(t_gen *gen)
 	if (!gen->philo_id)
 		msg_err("failed to alloc memory.\n", gen);
 	gen->start_time = get_time();
-/* 	while (1)
-	{
-		printf("tempo: %ld\n", (get_time() - gen->start_time));
-	} */
 }

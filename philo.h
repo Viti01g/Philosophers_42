@@ -6,7 +6,7 @@
 /*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:39:20 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/12 12:49:14 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/13 12:26:28 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ typedef struct philo
 	long			num_eats_philo;
 	long			num_eats_philo_max;
 	long			finish_eat;
+	long			last_eat;
 	long			mls_eat_ph;
 	long			mls_die_ph;
 	long			mls_thk_ph;
-	long			last_eat;
 	int				tenedo_izq;
 	int				tenedo_drch;
 	pthread_mutex_t	*mu_print_ph;
@@ -54,6 +54,8 @@ typedef struct philo
 typedef struct gen
 {
 	int				flag;
+	int				flag_mllc;
+	int				flag_mtex;
 	long			start_time;
 	long			actual_time;
 	long			num_philos;
@@ -72,7 +74,6 @@ typedef struct gen
 void	msg_err(char *msg, t_gen *gen);
 void	init_variable(t_gen *gen, char **argv, int argc);
 int		ft_atoi_philo(char *str);
-void	freeall(t_gen *data);
 int		check_num(char **str);
 void	init_data(t_gen *gen);
 long	get_time(void);
@@ -82,5 +83,7 @@ void	init_mutex(t_gen *gen, int i);
 void	ft_print_msgs(t_philo *philo, char *msg);
 void	dta_philos(t_gen *gen, int i);
 int		ft_caducado(t_gen *gen, int i);
+void	ft_free_mtx(t_gen *gen);
+void	ft_free(t_gen *gen);
 
 #endif

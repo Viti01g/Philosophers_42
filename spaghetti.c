@@ -6,7 +6,7 @@
 /*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:41:11 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/12 14:00:40 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/13 12:18:31 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	ft_start_party(t_gen *gen)
 	int	i;
 
 	i = 0;
+	gen->flag_mtex = TRUE;
 	while (i < gen->num_philos)
 	{
 		init_mutex(gen, i);
