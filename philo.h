@@ -6,7 +6,7 @@
 /*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:39:20 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/13 12:26:28 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/14 19:36:45 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	ft_print_msgs(t_philo *philo, char *msg);
 void	dta_philos(t_gen *gen, int i);
 int		ft_caducado(t_gen *gen, int i);
 void	ft_free_mtx(t_gen *gen);
-void	ft_free(t_gen *gen);
+void	ft_free_mllc(t_gen *gen);
+void	end_philos(t_gen *gen);
 
 #endif
