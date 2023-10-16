@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spaghetti.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:41:11 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/13 12:18:31 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/16 19:14:28 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ void	*ft_spaghetti(void *tomato_y_peperoni)
 	if (cheese->id % 2 == 0)
 		ft_usleep(50);
 	pthread_mutex_lock(cheese->mu_print_ph);
-	while (1)
+	while (*(cheese->life) == FALSE)
 	{
 		pthread_mutex_unlock(cheese->mu_print_ph);
 		ft_provolonne(cheese);
 		pthread_mutex_lock(cheese->mu_print_ph);
 	}
 	pthread_mutex_unlock(cheese->mu_print_ph);
+	return (NULL);
 }
 
 void	ft_start_party(t_gen *gen)

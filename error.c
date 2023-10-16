@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:28:06 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/14 20:14:43 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/16 19:17:49 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_print_msgs(t_philo *philo, char *msg)
 
 	pthread_mutex_lock(philo->mu_print_ph);
 	time_aux = get_time() - philo->start_time_philo;
-	if (philo->life != FALSE)
+	if (*(philo->life) == FALSE)
 		printf("%ld ms -- philo %d %s\n", time_aux, philo->id, msg);
 	pthread_mutex_unlock(philo->mu_print_ph);
 }
@@ -70,7 +70,6 @@ void	end_philos(t_gen *gen)
 		while (i < gen->num_philos)
 		{
 			pthread_mutex_unlock(gen->philo[i].mu_data_ph);
-	printf("suuuuuuuuu\n");
 			pthread_join(gen->philo_id[i], NULL);
 			i++;
 		}

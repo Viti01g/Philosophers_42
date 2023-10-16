@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: VR <VR@student.42.fr>                      +#+  +:+       +#+         #
+#    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 13:01:34 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/10/14 19:53:53 by VR               ###   ########.fr        #
+#    Updated: 2023/10/16 19:37:38 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=thread
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=thread
 
 SRCS = main.c \
 			error.c \

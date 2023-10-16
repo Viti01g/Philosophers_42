@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 14:56:27 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/13 12:11:58 by VR               ###   ########.fr       */
+/*   Updated: 2023/10/16 18:12:17 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_variable(t_gen *gen, char **argv, int argc)
 		|| gen->ml_thk_gn <= 0)
 		msg_err("Todos los argumentos tienen que estar por encima de 0.\n", gen);
 	gen->num_eats_counter = 0;
+	gen->flag = FALSE;
 	init_data(gen);
 }
 
