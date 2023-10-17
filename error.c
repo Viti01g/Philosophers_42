@@ -6,11 +6,11 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:28:06 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/16 19:17:49 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:58:41 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 void	ft_free_mllc(t_gen *gen)
 {
@@ -32,10 +32,11 @@ void	ft_free_mtx(t_gen *gen)
 
 	i = -1;
 	while (++i < gen->num_philos)
-		pthread_mutex_destroy(&(gen->forks[i])); 
+		pthread_mutex_destroy(&(gen->forks[i]));
 	free(gen->philo);
 	pthread_mutex_destroy(gen->mu_print);
 }
+
 void	msg_err(char *msg, t_gen *gen)
 {
 	if (gen->flag_mllc == TRUE)
@@ -43,8 +44,7 @@ void	msg_err(char *msg, t_gen *gen)
 	if (gen->flag_mtex == TRUE)
 		ft_free_mtx(gen);
 	printf("%s\n", msg);
-	exit(EXIT_FAILURE);
-
+	exit (EXIT_FAILURE);
 }
 
 void	ft_print_msgs(t_philo *philo, char *msg)

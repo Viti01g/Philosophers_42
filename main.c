@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:27:15 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/16 19:32:56 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:57:12 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ static void	ft_pedir_cuenta(t_gen *gen)
 		}
 	}
 }
-void	leaks()
+/* void	leaks()
 {
 	system("leaks -q philo");
-}
+	atexit(leaks);
+} */
+
 int	main(int argc, char **argv)
 {
 	t_gen	gen;
 
-	atexit(leaks);
 	if (argc == 5 || argc == 6)
 	{
 		init_variable(&gen, argv, argc);

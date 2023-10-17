@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 16:41:11 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/10/16 19:14:28 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:02:47 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ static void	ft_provolonne(t_philo *philo)
 	ft_print_msgs(philo, LFT_FRK);
 	pthread_mutex_lock(&(philo->data->forks[philo->tenedo_drch]));
 	ft_print_msgs(philo, RGH_FRK);
+	pthread_mutex_lock(philo->mu_data_ph);
 	philo->last_eat = get_time() - philo->start_time_philo;
 	ft_print_msgs(philo, EATING);
-	ft_usleep(philo->mls_eat_ph);
 	if (philo->num_eats_philo >= 0)
 		philo->num_eats_philo++;
+	pthread_mutex_unlock(philo->mu_data_ph);
+	ft_usleep(philo->mls_eat_ph);
 	pthread_mutex_unlock(&(philo->data->forks[philo->tenedo_izq]));
 	pthread_mutex_unlock(&(philo->data->forks[philo->tenedo_drch]));
 	ft_print_msgs(philo, SLEEP);
@@ -30,7 +32,7 @@ static void	ft_provolonne(t_philo *philo)
 	ft_print_msgs(philo, THNK);
 }
 
-void	*ft_spaghetti(void *tomato_y_peperoni)
+void	*ft_pasta(void *tomato_y_peperoni)
 {
 	t_philo	*cheese;
 
@@ -60,7 +62,7 @@ void	ft_start_party(t_gen *gen)
 	{
 		init_mutex(gen, i);
 		dta_philos(gen, i);
-		pthread_create(&(gen->philo_id[i]), NULL, &ft_spaghetti, &(gen->philo[i]));
+		pthread_create(&(gen->philo_id[i]), NULL, &ft_pasta, &(gen->philo[i]));
 		i++;
 	}
 }
@@ -74,9 +76,10 @@ int	ft_caducado(t_gen *gen, int i)
 		pthread_mutex_lock(gen->mu_print);
 		gen->flag = TRUE;
 		pthread_mutex_unlock(gen->mu_print);
-		return(0);
+		return (0);
 	}
-	if (gen->philo[i].num_eats_philo == gen->philo[i].num_eats_philo_max && gen->philo[i].finish_eat == FALSE)
+	if (gen->philo[i].num_eats_philo == gen->philo[i].num_eats_philo_max
+		&& gen->philo[i].finish_eat == FALSE)
 	{
 		gen->philo[i].finish_eat = TRUE;
 		gen->num_eats_counter++;
@@ -88,5 +91,5 @@ int	ft_caducado(t_gen *gen, int i)
 			return (0);
 		}
 	}
-	return(1);
+	return (1);
 }
